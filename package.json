@@ -1,0 +1,17 @@
+{
+  "name": "inscripcion-talleres",
+  "version": "1.0.0",
+  "description": "Sistema de inscripción a talleres - Práctica UD1 DWES",
+  "type": "module",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "dependencies": {
+    "ejs": "^7.0.1",
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

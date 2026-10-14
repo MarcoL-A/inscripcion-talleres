@@ -1,0 +1,26 @@
+<%- include('partials/cabecera', { tituloPagina }) %>
+
+<% if (inscrito) { %>
+  <p class="ok">Inscripción realizada correctamente.</p>
+<% } %>
+
+<article>
+  <h1><%= taller.titulo %></h1>
+  <p>Categoría: <%= taller.categoria %></p>
+  <p>Nivel: <%= taller.nivel %></p>
+  <p>Plazas totales: <%= taller.plazas %></p>
+
+  <% if (plazasRestantes === 0) { %>
+    <p class="estado completo"><%= estado %></p>
+  <% } else if (plazasRestantes === 1) { %>
+    <p class="estado ultima"><%= estado %></p>
+    <a class="boton" href="/talleres/<%= taller.id %>/inscripcion">¡Inscríbete ya!</a>
+  <% } else { %>
+    <p class="estado libre"><%= estado %></p>
+    <a class="boton" href="/talleres/<%= taller.id %>/inscripcion">Inscribirme</a>
+  <% } %>
+</article>
+
+<p><a href="/talleres">← Volver al listado</a></p>
+
+<%- include('partials/pie') %>

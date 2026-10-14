@@ -1,0 +1,38 @@
+<%- include('partials/cabecera', { tituloPagina }) %>
+
+<h1>Talleres</h1>
+
+<form action="/talleres" method="get" class="filtros">
+  <label for="categoria">Categoría</label>
+  <input id="categoria" name="categoria" value="<%= filtros.categoria %>">
+
+  <label for="nivel">Nivel</label>
+  <input id="nivel" name="nivel" value="<%= filtros.nivel %>">
+
+  <label>
+    <input type="checkbox" name="disponibles" value="true" <%= filtros.soloDisponibles ? 'checked' : '' %>>
+    Solo con plazas
+  </label>
+
+  <button>Filtrar</button>
+</form>
+
+<% if (talleres.length === 0) { %>
+  <p>No hay talleres que cumplan los filtros.</p>
+<% } else if (talleres.length === 1) { %>
+  <p>Se ha encontrado un taller.</p>
+<% } else { %>
+  <p>Se han encontrado <%= talleres.length %> talleres.</p>
+<% } %>
+
+<ul class="lista">
+  <% for (const taller of talleres) { %>
+    <li>
+      <a href="/talleres/<%= taller.id %>"><%= taller.titulo %></a>
+      <span><%= taller.categoria %> · <%= taller.nivel %></span>
+      <span class="<%= taller.plazasRestantes === 0 ? 'completo' : 'libre' %>"><%= taller.estado %></span>
+    </li>
+  <% } %>
+</ul>
+
+<%- include('partials/pie') %>
